@@ -92,6 +92,28 @@ int get_arg_int(int argc, char *argv[], char short_name, int default_value) {
   return default_value;
 }
 
+double get_arg_double(int argc, char *argv[], char short_name, double default_value, bool *is_set) {
+  *is_set = true;
+  Arg arg = get_arg_by_short_name(short_name);
+  for (int i = 1; i < argc; i++) {
+    if (match_short_name(short_name, argv[i]) ||
+        match_long_name(arg.long_name, argv[i])) {
+      if (i + 1 < argc) {
+        char *endptr;
+        double ret = strtod(argv[i + 1], &endptr);
+        if (endptr == argv[i + 1]) {
+          *is_set = false;
+          return default_value;
+        } else {
+          return ret;
+        }
+      }
+    }
+  }
+  *is_set = false;
+  return default_value;
+}
+
 bool get_arg_bool(int argc, char *argv[], char short_name, bool default_value) {
   Arg arg = get_arg_by_short_name(short_name);
   for (int i = 1; i < argc; i++) {
