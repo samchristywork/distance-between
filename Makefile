@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-Wall -Wextra -pedantic -g
 LIBS=-lm
 
-all: build/main
+all: build/main build/test
 
 build/%.o: src/%.c
 	mkdir -p build
