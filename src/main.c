@@ -16,9 +16,12 @@ int main(int argc, char *argv[]) {
           ARG_REQUIRED);
   add_arg('h', "help", "Print this usage message.", ARG_NONE);
   add_arg('v', "version", "Print version information.", ARG_NONE);
+  add_arg('m', "miles", "Display the distance in miles instead of kilometers.",
+          ARG_NONE);
 
   if (get_arg_bool(argc, argv, 'h', false)) {
     usage(argv[0]);
+    exit(EXIT_SUCCESS);
   }
 
   if (get_arg_bool(argc, argv, 'v', false)) {
@@ -35,6 +38,7 @@ int main(int argc, char *argv[]) {
   for (int i = 0; i < 4; i++) {
     if (!is_set[i]) {
       usage(argv[0]);
+      exit(EXIT_FAILURE);
     }
   }
 
@@ -45,5 +49,13 @@ int main(int argc, char *argv[]) {
   Coord c2 = {lat2, lon2};
 
   double d = haversine(c1, c2);
-  printf("Distance: %f km\n", d);
+
+  if (get_arg_bool(argc, argv, 'm', false)) {
+    d *= 0.621371; // (1 km ≈ 0.621371 miles)
+    printf("Distance: %f miles\n", d);
+  } else {
+    printf("Distance: %f km\n", d);
+  }
+
+  return EXIT_SUCCESS;
 }
