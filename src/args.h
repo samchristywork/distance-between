@@ -19,7 +19,8 @@ void add_arg(char short_name, const char *long_name, const char *description,
              FLAG flags);
 bool get_arg_bool(int argc, char *argv[], char short_name, bool default_value);
 int get_arg_int(int argc, char *argv[], char short_name, int default_value);
-double get_arg_double(int argc, char *argv[], char short_name, double default_value, bool *is_set);
+double get_arg_double(int argc, char *argv[], char short_name,
+                      double default_value, bool *is_set);
 char *get_arg_string(int argc, char *argv[], char short_name,
                      char *default_value);
 char **get_arg_strings(int argc, char *argv[], char short_name, int *count);

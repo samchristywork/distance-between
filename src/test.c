@@ -22,7 +22,8 @@ void test_london_caracas() {
   Coord caracas = {10.4806, -66.9036};
   double expected_distance = 7498.544;
   double result = haversine(london, caracas);
-  printf("Testing London to Caracas distance: result = %f, expected = %f\n", result, expected_distance);
+  printf("Testing London to Caracas distance: result = %f, expected = %f\n",
+         result, expected_distance);
   assert(approximately_equal(result, expected_distance, EPSILON));
 }
 
@@ -31,7 +32,8 @@ void test_equator() {
   Coord point2 = {0.0, 90.0};
   double expected_distance = 10007.543;
   double result = haversine(point1, point2);
-  printf("Testing distance along equator: result = %f, expected = %f\n", result, expected_distance);
+  printf("Testing distance along equator: result = %f, expected = %f\n", result,
+         expected_distance);
   assert(approximately_equal(result, expected_distance, EPSILON));
 }
 
@@ -40,7 +42,9 @@ void test_poles() {
   Coord south_pole = {-90.0, 0.0};
   double expected_distance = 20015.087;
   double result = haversine(north_pole, south_pole);
-  printf("Testing north pole to south pole distance: result = %f, expected = %f\n", result, expected_distance);
+  printf(
+      "Testing north pole to south pole distance: result = %f, expected = %f\n",
+      result, expected_distance);
   assert(approximately_equal(result, expected_distance, EPSILON));
 }
 

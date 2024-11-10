@@ -92,7 +92,8 @@ int get_arg_int(int argc, char *argv[], char short_name, int default_value) {
   return default_value;
 }
 
-double get_arg_double(int argc, char *argv[], char short_name, double default_value, bool *is_set) {
+double get_arg_double(int argc, char *argv[], char short_name,
+                      double default_value, bool *is_set) {
   *is_set = true;
   Arg arg = get_arg_by_short_name(short_name);
   for (int i = 1; i < argc; i++) {
