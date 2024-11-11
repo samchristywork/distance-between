@@ -2,13 +2,37 @@
 
 ## Overview
 
+`distance-between` is a program for calculating the distance between two
+geographical coordinates on the Earth's surface using the Haversine formula.
+This formula is typically employed to compute distances assuming a spherical
+Earth, providing a means to estimate how far apart two points are based on their
+latitude and longitude.
+
 ## Features
 
 ## Build
 
+Run `make` to build the program.
+
+Run `make test` to run tests.
+
 ## Usage
 
 ## Examples
+
+The distance between the North and South pole in miles:
+
+```
+./build/main --lat1 0 --lon1 -90 --lat2 00 --lon2 90 --miles
+Distance: 12436.794498 miles
+```
+
+Distance between London and Caracas:
+
+```
+./buid/main --lat1 51.5074 --lon1 -0.1278 --lat2 10.4806 --lon2 -66.9036
+Distance: 7498.544064 km
+```
 
 ## Dependencies
 
